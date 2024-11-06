@@ -1,18 +1,21 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
 import Navbar from "./components/Navbar";
 
-class App extends React.Component {
-  render() {
-    return (
-      <>
+const App = () => {
+  return (
+    <>
+      <Router>
         <Navbar />
-        <BlogList />
-        <BlogDetail />
-      </>
-    );
-  }
-}
+        <Routes>
+          <Route path="/" element={<BlogList />} />
+          <Route path="/post/:id" element={<BlogDetail />} />
+        </Routes>
+      </Router>
+    </>
+  );
+};
 
 export default App;
